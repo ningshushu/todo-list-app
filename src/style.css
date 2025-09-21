@@ -1,0 +1,348 @@
+/* CSS 变量定义 */
+:root {
+  --primary-color: #4361ee;
+  --primary-hover: #3a0ca3;
+  --secondary-color: #4cc9f0;
+  --background-color: #f8f9fa;
+  --card-background: #ffffff;
+  --text-color: #2b2d42;
+  --text-secondary: #6c757d;
+  --border-color: #e0e0e0;
+  --success-color: #2ecc71;
+  --danger-color: #e74c3c;
+  --warning-color: #f39c12;
+  --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --transition: all 0.3s ease;
+  --font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* 全局样式重置 */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color);
+  line-height: 1.6;
+  padding: 0;
+  margin: 0;
+  min-height: 100vh;
+}
+
+/* 容器样式 */
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+/* 头部样式 */
+.header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.header h1 {
+  font-size: 2.5rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.subtitle {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* 主应用容器 */
+.todo-app {
+  background-color: var(--card-background);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  margin-bottom: 2rem;
+  flex: 1;
+}
+
+/* 输入框容器 */
+.todo-input-container {
+  display: flex;
+  gap: 0.8rem;
+  margin-bottom: 1.5rem;
+}
+
+#todo-input {
+  flex: 1;
+  padding: 0.8rem 1.2rem;
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-md);
+  font-size: 1rem;
+  transition: var(--transition);
+  outline: none;
+}
+
+#todo-input:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(67, 97, 238, 0.1);
+}
+
+#todo-input::placeholder {
+  color: var(--text-secondary);
+}
+
+/* 按钮样式 */
+button {
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 600;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  transition: var(--transition);
+  outline: none;
+}
+
+.add-button {
+  padding: 0.8rem 1.5rem;
+  background-color: var(--primary-color);
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  min-width: 100px;
+}
+
+.add-button:hover {
+  background-color: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-md);
+}
+
+.add-button:active {
+  transform: translateY(0);
+}
+
+.clear-button {
+  padding: 0.5rem 1rem;
+  background-color: transparent;
+  color: var(--text-secondary);
+  border: 1px solid var(--border-color);
+}
+
+.clear-button:hover {
+  background-color: var(--danger-color);
+  color: white;
+  border-color: var(--danger-color);
+}
+
+/* 待办事项列表 */
+.todo-list-container {
+  max-height: 400px;
+  overflow-y: auto;
+  margin-bottom: 1.5rem;
+}
+
+.todo-list {
+  list-style: none;
+}
+
+.todo-item {
+  display: flex;
+  align-items: center;
+  padding: 1rem;
+  border-bottom: 1px solid var(--border-color);
+  transition: var(--transition);
+  position: relative;
+}
+
+.todo-item:last-child {
+  border-bottom: none;
+}
+
+.todo-item:hover {
+  background-color: rgba(67, 97, 238, 0.05);
+}
+
+.todo-checkbox {
+  width: 1.2rem;
+  height: 1.2rem;
+  margin-right: 1rem;
+  cursor: pointer;
+  accent-color: var(--primary-color);
+}
+
+.todo-text {
+  flex: 1;
+  font-size: 1rem;
+  transition: var(--transition);
+  word-break: break-word;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+  color: var(--text-secondary);
+  opacity: 0.6;
+}
+
+.todo-actions {
+  display: flex;
+  gap: 0.5rem;
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.todo-item:hover .todo-actions {
+  opacity: 1;
+}
+
+.edit-button,
+.delete-button {
+  padding: 0.4rem 0.8rem;
+  font-size: 0.875rem;
+}
+
+.edit-button {
+  background-color: var(--warning-color);
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: #e67e22;
+}
+
+.delete-button {
+  background-color: var(--danger-color);
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: #c0392b;
+}
+
+/* 编辑输入框 */
+.todo-edit-input {
+  flex: 1;
+  padding: 0.5rem 0.8rem;
+  border: 2px solid var(--primary-color);
+  border-radius: var(--radius-sm);
+  font-size: 1rem;
+  margin-right: 0.8rem;
+  outline: none;
+}
+
+/* 空状态样式 */
+.empty-state {
+  text-align: center;
+  padding: 3rem 1rem;
+  color: var(--text-secondary);
+}
+
+.empty-icon {
+  width: 64px;
+  height: 64px;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+/* 页脚样式 */
+.todo-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.todo-stats {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+/* 应用页脚 */
+.app-footer {
+  text-align: center;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  padding: 1rem 0;
+  margin-top: auto;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+  .container {
+    padding: 1rem;
+  }
+  
+  .header h1 {
+    font-size: 2rem;
+  }
+  
+  .todo-app {
+    padding: 1.5rem;
+  }
+  
+  .todo-input-container {
+    flex-direction: column;
+  }
+  
+  .add-button {
+    width: 100%;
+  }
+  
+  .todo-actions {
+    opacity: 1;
+  }
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.todo-item {
+  animation: fadeIn 0.3s ease-out;
+}
+
+/* 滚动条样式 */
+.todo-list-container::-webkit-scrollbar {
+  width: 8px;
+}
+
+.todo-list-container::-webkit-scrollbar-track {
+  background: var(--background-color);
+  border-radius: 4px;
+}
+
+.todo-list-container::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.todo-list-container::-webkit-scrollbar-thumb:hover {
+  background: var(--text-secondary);
+}

@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>To-Do List 应用</title>
+  </head>
+  <body>
+    <div class="container">
+      <header class="header">
+        <h1>我的待办事项</h1>
+        <p class="subtitle">记录每一天的计划</p>
+      </header>
+      
+      <main class="todo-app">
+        <!-- 添加新待办事项 -->
+        <div class="todo-input-container">
+          <input
+            type="text"
+            id="todo-input"
+            placeholder="添加新的待办事项..."
+            autocomplete="off"
+          />
+          <button id="add-button" class="add-button">添加</button>
+        </div>
+        
+        <!-- 待办事项列表 -->
+        <div class="todo-list-container">
+          <ul id="todo-list" class="todo-list"></ul>
+          <!-- 空状态提示 -->
+          <div id="empty-state" class="empty-state">
+            <svg class="empty-icon" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M19 3H5C3.89543 3 3 3.89543 3 5V19C3 20.1046 3.89543 21 5 21H19C20.1046 21 21 20.1046 21 19V5C21 3.89543 20.1046 3 19 3Z" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 8H17" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 12H17" stroke="currentColor" stroke-width="1.5"/>
+              <path d="M7 16H11" stroke="currentColor" stroke-width="1.5"/>
+            </svg>
+            <p>暂无待办事项，添加一个开始吧！</p>
+          </div>
+        </div>
+        
+        <!-- 操作栏 -->
+        <div class="todo-footer">
+          <div class="todo-stats">
+            <span id="todo-count"></span>
+          </div>
+          <button id="clear-completed" class="clear-button">清除已完成</button>
+        </div>
+      </main>
+      
+      <footer class="app-footer">
+        <p>© 2024 To-Do List 应用 | 保持高效每一天</p>
+      </footer>
+    </div>
+    
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
